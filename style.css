@@ -1,25 +1,54 @@
+body { 
+  background: powderblue;
+  
+}
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/* h4{
+  text-align:center;
+} */
 .grid {
+    
     width: 200px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color:rgb(15, 15, 15);
+    border-radius:10px;
+    background-image: linear-gradient( 95.3deg, rgb(120, 220, 197) 26.8%, rgb(112, 196, 235) 64% );
+    
+
 }
 
 .grid div {
     height: 20px;
-    width:  20px;
-    background-color:crimson;
+    width:  20px;  
+    top: 50%;
+}
+
+.tetromino {
+  background-color: blueviolet;
+  box-shadow: 0 -2px 0 3px #520ca9 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+  cursor: pointer;
+  display: inline-block;
+  height: 75px;
+  width: 75px;
+}
+
+
+.tetromino:hover {
+background: #a728bd;
+box-shadow: 0 -2px 0 3px #c07dd3 inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
 }
 
 .wrap {
     height: 100%;
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
-  }
+    
+} 
   
-  .button {
+.button {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -28,18 +57,21 @@
     letter-spacing: 2.5px;
     font-weight: 500;
     color: #000;
-    background-color: #fff;
+    background-color: #ffffff;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    }
+    
+}
   
-  .button:hover {
-    background-color: #2EE59D;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+.button:hover {
+    background-color: #2cdbcc;
+    box-shadow: 0px 15px 20px rgba(26, 226, 196, 0.909);
     color: #fff;
     transform: translateY(-7px);
-  }
+} 
+
+

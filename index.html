@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"></link>
+    <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+    <style>
+    body {
+     font-family: 'Didact Gothic';font-size: 22px;
+    }
+    </style>
     <script src="app.js"></script>
     <title>Tetris</title>
 </head>
 <body>
 
-    <h3>Score:<span id="score">0</span></h3>
-    <div class="wrap">
-    <button id="start-button" class="button">Start/Pause</button>
-    </div>
 
+    <h4>SCORE: <span id="score">0</span></h4>
+    <div class="wrap">
+            <button id="start-button" class="button">Start/Pause</button>
+    </div>
+    <br>
     <div class="grid">
     <div></div>
     <div></div>
@@ -215,6 +222,7 @@
     <div></div>
     <div></div>
     <div></div>
+    
 </div>
 </body>
 </html>
