@@ -94,7 +94,7 @@ function getRandomIntIinclusive(min,max){
 }
 //make the tetromino move down every second
 // timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
-timerId = setInterval(moveDown,1000)
+// timerId = setInterval(moveDown,1000)
 
 // assign functions to keyCodes
 function control(e){
@@ -180,17 +180,17 @@ function rotate() {
 
 //show up-next tetromino in mini-grid display
  const displaySquares = document.querySelectorAll('.mini-grid div')
-  const displayWidth = 4
-  const displayIndex = 0
+  const displaygridSpacing = 4
+  const displayCell = 0
 
 
 //the Tetrominos without rotations
 const upNextTetrominoes = [
-    [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
-    [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetromino
-    [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
-    [0, 1, displayWidth, displayWidth+1], //oTetromino
-    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+    [1, displaygridSpacing+1, displaygridSpacing*2+1, 2], //lTetromino
+    [0, displaygridSpacing, displaygridSpacing+1, displaygridSpacing*2+1], //zTetromino
+    [1, displaygridSpacing, displaygridSpacing+1, displaygridSpacing+2], //tTetromino
+    [0, 1, displaygridSpacing, displaygridSpacing+1], //oTetromino
+    [1, displaygridSpacing+1, displaygridSpacing*2+1, displaygridSpacing*3+1] //iTetromino
   ]
 
   //display the shape in the mini-grid display
@@ -201,7 +201,7 @@ const upNextTetrominoes = [
      
     })
     upNextTetrominoes[nextRandom].forEach( index => {
-      displaySquares[displayIndex + index].classList.add('tetromino')
+      displaySquares[displayCell + index].classList.add('tetromino')
      
     })
   }
@@ -213,12 +213,30 @@ const upNextTetrominoes = [
       timerId = null
     } else {
       draw()
-      timerId = setInterval(moveDown, 1000)
+      timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
       nextRandom = Math.floor(Math.random()*theTetrominoes.length)
       displayShape()
     }
   })
+//add score
+function addScore() {
+    for (let i = 0; i < 199; i +=gridSpacing) {
+      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
 
+      if(row.every(cell => squares[cell].classList.contains('taken'))) {
+        score +=10
+        scoreDisplay.innerHTML = score
+        row.forEach(cell => {
+          squares[cell].classList.remove('taken')
+          squares[cell].classList.remove('tetromino')
+          
+        })
+        const squaresRemoved = squares.splice(i, width)
+        squares = squaresRemoved.concat(squares)
+        squares.forEach(cell => grid.appendChild(cell))
+      }
+    }
+  }
 })
 
 
