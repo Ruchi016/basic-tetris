@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
    const startBtn = document.querySelector('#start-button')
    const gridSpacing = 10
    let nextRandom = 0 
-
+   let timerId
    //The Tetrominoes
    const lTetromino = [
     [1, gridSpacing+1, gridSpacing*2+1, 2],
@@ -93,8 +93,8 @@ function getRandomIntIinclusive(min,max){
     // The maximum is inclusive and the minimum is inclusive
 }
 //make the tetromino move down every second
-timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
-// timerId = setInterval(moveDown,1000)
+// timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
+timerId = setInterval(moveDown,1000)
 
 // assign functions to keyCodes
 function control(e){
@@ -205,6 +205,19 @@ const upNextTetrominoes = [
      
     })
   }
+
+   //add functionality to the button
+   startBtn.addEventListener('click', () => {
+    if (timerId) {
+      clearInterval(timerId)
+      timerId = null
+    } else {
+      draw()
+      timerId = setInterval(moveDown, 1000)
+      nextRandom = Math.floor(Math.random()*theTetrominoes.length)
+      displayShape()
+    }
+  })
 
 })
 
