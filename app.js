@@ -93,8 +93,8 @@ function getRandomIntIinclusive(min,max){
     // The maximum is inclusive and the minimum is inclusive
 }
 //make the tetromino move down every second
-// timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
-timerId = setInterval(moveDown,1000)
+timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
+// timerId = setInterval(moveDown,1000)
 
 // assign functions to keyCodes
 function control(e){
