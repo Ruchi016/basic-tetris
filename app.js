@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
    const scoreDisplay = document.querySelector('#score')
    const startBtn = document.querySelector('#start-button')
    const gridSpacing = 10
-   
+   let nextRandom = 0 
+
    //The Tetrominoes
    const lTetromino = [
     [1, gridSpacing+1, gridSpacing*2+1, 2],
@@ -59,8 +60,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
    const theTetrominoes = [lTetromino,zTetromino,tTetromino,oTetromino,iTetromino]
 
-  let currentPosition = 5
+  let currentPosition = 4
   let currentRotation = 0
+
   //randomly sleect a Tetromino and its first rotation
   let random = Math.floor(Math.random()*theTetrominoes.length)
   //console.log(random)
@@ -91,7 +93,8 @@ function getRandomIntIinclusive(min,max){
     // The maximum is inclusive and the minimum is inclusive
 }
 //make the tetromino move down every second
-timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
+// timerId = setInterval(moveDown, getRandomIntIinclusive(805,1000))
+timerId = setInterval(moveDown,1000)
 
 // assign functions to keyCodes
 function control(e){
@@ -122,14 +125,16 @@ function moveDown(){
 }
 //freeze function
 function freeze(){
-    if(tetromino.some(cell => squares[currentPosition + cell +gridSpacing].classList.contains('taken')))
+    if(tetromino.some(cell => squares[currentPosition + cell + gridSpacing].classList.contains('taken')))
     {
         tetromino.forEach(cell => squares[currentPosition + cell].classList.add('taken'))
         //start a new tetromino falling
-        random = Math.floor(Math.random() * theTetrominoes.length)
+        random = nextRandom
+        nextRandom = Math.floor(Math.random() * theTetrominoes.length)
         tetromino = theTetrominoes[random][currentRotation]
-        currentPosition = 5
+        currentPosition = 4
         draw()
+        displayShape()
     }
 }
 
@@ -162,7 +167,7 @@ function moveRight(){
     draw()
 }
 
-
+//rotate the tetromino
 function rotate() {
     undraw()
     currentRotation ++
@@ -173,4 +178,34 @@ function rotate() {
     draw()
 }
 
+//show up-next tetromino in mini-grid display
+ const displaySquares = document.querySelectorAll('.mini-grid div')
+  const displayWidth = 4
+  const displayIndex = 0
+
+
+//the Tetrominos without rotations
+const upNextTetrominoes = [
+    [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
+    [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetromino
+    [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
+    [0, 1, displayWidth, displayWidth+1], //oTetromino
+    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+  ]
+
+  //display the shape in the mini-grid display
+  function displayShape() {
+    //remove any trace of a tetromino form the entire grid
+    displaySquares.forEach(square => {
+      square.classList.remove('tetromino')
+     
+    })
+    upNextTetrominoes[nextRandom].forEach( index => {
+      displaySquares[displayIndex + index].classList.add('tetromino')
+     
+    })
+  }
+
 })
+
+
