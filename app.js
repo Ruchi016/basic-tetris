@@ -4,13 +4,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
         alert("Welcome to the world of Tetris!"+wlcm_msg)
        }
        alertMe()
-   const grid = document.querySelector('.grid')
-   let squares = Array.from(document.querySelectorAll('.grid div'))
-   const scoreDisplay = document.querySelector('#score')
-   const startBtn = document.querySelector('#start-button')
-   const gridSpacing = 10
-   let nextRandom = 0 
-   let timerId
+    const grid = document.querySelector('.grid')
+    let squares = Array.from(document.querySelectorAll('.grid div'))
+    const scoreDisplay = document.querySelector('#score')
+    const startBtn = document.querySelector('#start-button')
+    const gridSpacing = 10
+    let nextRandom = 0 
+    let timerId
+    let score = 0
+    const colors = [
+      'deepskyblue',
+      'coral',
+      'maroon',
+      'yellow',
+      'green',
+      'chartreuse',
+      'fuchsia',
+      'cyan',   
+      'chocolate',
+
+    ]
+
    //The Tetrominoes
    const lTetromino = [
     [1, gridSpacing+1, gridSpacing*2+1, 2],
@@ -76,6 +90,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   function draw(){
     tetromino.forEach(cell =>{
         squares[currentPosition + cell].classList.add('tetromino')
+        squares[currentPosition + cell].style.backgroundColor = colors[random]
     })
   }
 
@@ -83,6 +98,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 function undraw(){
     tetromino.forEach(cell=>{
         squares[currentPosition + cell].classList.remove('tetromino')
+        squares[currentPosition + cell].style.backgroundColor = ''
     })
 }
 
@@ -135,6 +151,8 @@ function freeze(){
         currentPosition = 4
         draw()
         displayShape()
+        addScore()
+        gameOver()
     }
 }
 
@@ -198,11 +216,11 @@ const upNextTetrominoes = [
     //remove any trace of a tetromino form the entire grid
     displaySquares.forEach(square => {
       square.classList.remove('tetromino')
-     
+      square.style.backgroundColor= ''
     })
-    upNextTetrominoes[nextRandom].forEach( index => {
-      displaySquares[displayCell + index].classList.add('tetromino')
-     
+    upNextTetrominoes[nextRandom].forEach( cell => {
+      displaySquares[displayCell + cell].classList.add('tetromino')
+      displaySquares[displayCell + cell].style.backgroundColor = colors[random]
     })
   }
 
@@ -229,14 +247,23 @@ function addScore() {
         row.forEach(cell => {
           squares[cell].classList.remove('taken')
           squares[cell].classList.remove('tetromino')
-          
+          squares[cell].style.backgroundColor = ''
         })
-        const squaresRemoved = squares.splice(i, width)
+        const squaresRemoved = squares.splice(i, gridSpacing)
         squares = squaresRemoved.concat(squares)
         squares.forEach(cell => grid.appendChild(cell))
       }
     }
   }
+
+  //game over
+  function gameOver(){
+    if(tetromino.some(cell => squares[currentPosition + cell].classList.contains('taken'))) {
+      scoreDisplay.innerHTML = 'end'
+      clearInterval(timerId)
+    }
+  }
+  
 })
 
 

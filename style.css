@@ -10,7 +10,6 @@ body {
   display: flex;
 }
 
-
 /* h4{
   text-align:center;
 } */
@@ -51,7 +50,7 @@ body {
 
 .tetromino {
   background-color: blueviolet;
-  box-shadow: 0 -2px 0 3px #520ca9 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+  box-shadow: 0 -2px 0 3px #0b080f inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
   cursor: pointer;
   display: inline-block;
   height: 75px;
@@ -60,8 +59,8 @@ body {
 
 
 .tetromino:hover {
-background: #a728bd;
-box-shadow: 0 -2px 0 3px #c07dd3 inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+background: #d9cedb;
+box-shadow: 0 -2px 0 3px #e1dae3 inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
 }
 
 .wrap {
