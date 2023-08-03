@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     [1,gridSpacing+1,gridSpacing*2+1,gridSpacing*3+1],
     [gridSpacing,gridSpacing+1,gridSpacing+2,gridSpacing+3]
    ]
+   
    //More Tetromino
    /* const tiTetromino = [
      [],
