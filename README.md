@@ -1,6 +1,12 @@
 # Tetris-Game 🔰
 
 
+https://github.com/Ruchi016/basic-tetris/assets/112696080/16d79522-8dcb-4715-9c4d-b48cd992c9df
+
+
+
+
+
 ## About the game ℹ️:
  - This project is a basic tetris game, with Start/Pause functionality and Displays the score.
  - I wanted to learn and practice javascript by implementation and Understanding the Tetris game logic and debugging helped me a lot in my learning process
