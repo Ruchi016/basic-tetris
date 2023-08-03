@@ -1,34 +1,43 @@
 body { 
   background: powderblue;
-  
+  height: 500px;
+  border: 7px solid rgb(27, 224, 207);
+  padding-top: 50px;
 }
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
 .container{
   display: flex;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* h4{
   text-align:center;
 } */
-
+ 
 .grid {
     width: 200px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
     border-radius:10px;
-    background-image: linear-gradient( 95.3deg, rgb(120, 220, 197) 26.8%, rgb(112, 196, 235) 64% );
-    
-
+    background-image: linear-gradient( 95.3deg, rgb(120, 220, 197) 26.8%, rgb(112, 196, 235) 64% )
 }
 
 .grid div {
     height: 20px;
     width:  20px;  
     top: 50%;
+   
 }
 
 .mini-grid{
@@ -39,14 +48,14 @@ body {
     flex-wrap:wrap;
     /* border-radius:10px; */
     background-image: linear-gradient( 95.3deg, rgb(120, 220, 197) 26.8%, rgb(112, 196, 235) 64% );
+
 }
 
 .mini-grid div{
   height: 20px;
   width: 20px;
+  
 }
-
-
 
 .tetromino {
   background-color: blueviolet;
@@ -57,7 +66,6 @@ body {
   width: 75px;
 }
 
-
 .tetromino:hover {
 background: #d9cedb;
 box-shadow: 0 -2px 0 3px #e1dae3 inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
@@ -66,7 +74,6 @@ box-shadow: 0 -2px 0 3px #e1dae3 inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rg
 .wrap {
     height: 100%;
     display: flex;
-    
 } 
   
 .button {

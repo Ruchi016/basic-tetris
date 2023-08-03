@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', ()=>{
-    function alertMe(){
+   /*  function alertMe(){
         wlcm_msg="🎮"
         alert("Welcome to the world of Tetris!"+wlcm_msg)
        }
-       alertMe()
+       alertMe() */
     const grid = document.querySelector('.grid')
     let squares = Array.from(document.querySelectorAll('.grid div'))
     const scoreDisplay = document.querySelector('#score')
     const startBtn = document.querySelector('#start-button')
+    const btn = document.getElementById('start-button')
     const gridSpacing = 10
     let nextRandom = 0 
     let timerId
@@ -24,6 +25,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
       'chocolate',
 
     ]
+
+   // Change button text on click
+    btn.addEventListener('click', function handleClick() {
+      btn.textContent = 'PAUSE';
+    });
 
    //The Tetrominoes
    const lTetromino = [
