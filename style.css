@@ -1,8 +1,28 @@
-body { 
-  background: powderblue;
-  height: 500px;
-  border: 7px solid rgb(27, 224, 207);
-  padding-top: 50px;
+body {
+  background: linear-gradient(100deg, #402, rgb(4, 95, 155));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Make the children elements stack vertically */
+  align-items: center; /* Center children horizontally */
+  padding-top: 40px;
+  margin-bottom:0px;
+  overflow-y: hidden;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A"),
+    linear-gradient(80deg, #202, rgb(22, 190, 176));
+  background-position: 50% 50%;
+  animation: background-move 10s linear infinite;
+  background-size: 100vw auto, 100% 100%;
+  background-size: unquote('max(100vw, 30em)') auto, 100% 100%;
+
+}
+
+
+@keyframes background-move {
+  0% { background-position: 0 0, 0 0; }
+  100% { 
+    background-position: 100vw 0, 0 0;
+    background-position: unquote('max(100vw, 40em)')  0, 0 0;
+  }
 }
 
 * {
@@ -14,16 +34,32 @@ body {
   display: flex;
 }
 
-.center {
+
+.info {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 210px;
+  margin-left: 222px;
+  border: 0px solid rgba(255, 252, 252, 1);
+  border-radius: 3px;
+  background: linear-gradient(
+    80deg,
+    rgba(255, 255, 255, 0.4) 12%,
+    rgba(255, 255, 255, 0.1) 77%
+  );
+  background-blend-mode: lighten;
+  box-shadow: 0px 4px 24px 1px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
-/* h4{
-  text-align:center;
-} */
- 
+.info h4{
+  font: size 12px;;
+  color: #ffffff;
+}
+.info span{
+  color: #ffffff;
+}
 .grid {
     width: 200px;
     height: 400px;
@@ -36,25 +72,22 @@ body {
 .grid div {
     height: 20px;
     width:  20px;  
-    top: 50%;
-   
+    top: 50%; 
 }
 
 .mini-grid{
-    margin-left: 30px;
+    margin-left: 20px;
     width:  80px;
     height: 80px;
     display: flex;
     flex-wrap:wrap;
-    /* border-radius:10px; */
+    border-radius:10px;
     background-image: linear-gradient( 95.3deg, rgb(120, 220, 197) 26.8%, rgb(112, 196, 235) 64% );
-
 }
 
 .mini-grid div{
   height: 20px;
-  width: 20px;
-  
+  width: 20px; 
 }
 
 .tetromino {
@@ -74,6 +107,9 @@ box-shadow: 0 -2px 0 3px #e1dae3 inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rg
 .wrap {
     height: 100%;
     display: flex;
+    position: absolute;
+    top: 155px;
+    margin-left: 210px;
 } 
   
 .button {
