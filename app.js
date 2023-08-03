@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     [1,gridSpacing+1,gridSpacing*2+1,gridSpacing*3+1],
     [gridSpacing,gridSpacing+1,gridSpacing+2,gridSpacing+3]
    ]
-   
+
    //More Tetromino
    /* const tiTetromino = [
      [],
@@ -181,9 +181,7 @@ function moveLeft(){
 function moveRight(){
     undraw()
     const isAtRightEdge = tetromino.some(cell => (currentPosition + cell)% gridSpacing === gridSpacing-1)
-
     if(!isAtRightEdge) currentPosition +=1
-
     if(tetromino.some(cell => squares[currentPosition + cell].classList.contains('taken')))
     {
         currentPosition -=1
@@ -265,11 +263,12 @@ function addScore() {
 
   //game over
   function gameOver(){
-    if(tetromino.some(cell => squares[currentPosition + cell].classList.contains('taken'))) {
-      scoreDisplay.innerHTML = 'end'
-      clearInterval(timerId)
+    if(tetromino.some(cell => squares[currentPosition + cell].classList.contains('taken'))) { 
+    scoreDisplay.innerHTML = 'END';
+    clearInterval(timerId); 
     }
   }
+  
   
   
 })
